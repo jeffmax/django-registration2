@@ -52,7 +52,7 @@ class RegistrationProfile(models.Model):
         verbose_name_plural = _('registration profiles')
 
     def __unicode__(self):
-        return u'Registration Profile for %s' % self.user
+        return 'Registration Profile for %s' % self.user
 
     def save(self, *args, **kwargs):
         if not self.moderation_time and self.moderated:

@@ -46,7 +46,7 @@ class RegistrationManager(models.Manager):
         salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
         username = user.username
 
-        if isinstance(username, unicode):
+        if isinstance(username, str):
             username = username.encode('utf-8')
 
         activation_key = hashlib.sha1(salt+username).hexdigest()
