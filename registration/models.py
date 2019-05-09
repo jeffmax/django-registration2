@@ -40,7 +40,7 @@ class RegistrationProfile(models.Model):
 
     # denotes the user has been moderated
     moderator = models.ForeignKey(User, related_name='moderated_profiles',
-        null=True, verbose_name=_('moderator'))
+        null=True, on_delete=models.SET_NULL, verbose_name=_('moderator'))
 
     # the time the user was moderated
     moderation_time = models.DateTimeField(_('moderation_time'), null=True)
