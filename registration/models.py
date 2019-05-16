@@ -23,7 +23,7 @@ class RegistrationProfile(models.Model):
     """
 
     user = models.OneToOneField(User, related_name='registration_profile',
-        verbose_name=_('user'))
+        verbose_name=_('user'), on_delete=models.CASCADE)
 
     activation_key = models.CharField(_('activation key'), max_length=40)
 
@@ -59,7 +59,7 @@ class RegistrationProfile(models.Model):
             self.moderation_time = datetime.now()
         super(RegistrationProfile, self).save(*args, **kwargs)
 
-    @transaction.commit_on_success
+    @transaction.atomic
     def activate(self):
         user = self.user
         user.is_active = True
